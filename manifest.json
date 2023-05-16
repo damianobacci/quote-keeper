@@ -2,5 +2,6 @@
   "name": "QuoteKeeper",
   "description": "A Chrome extension to build a quote database",
   "version": "0.1.0",
+  "permissions": "activeTab",
   "manifest_version": 3
 }
