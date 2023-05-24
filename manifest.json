@@ -2,7 +2,13 @@
   "name": "QuoteKeeper",
   "description": "A Chrome extension to build a quote database",
   "version": "0.1.0",
-  "permissions": ["storage", "activeTab", "identity", "https://*.google.com/"],
+  "permissions": [
+    "storage",
+    "activeTab",
+    "identity",
+    "contextMenus",
+    "https://*.google.com/"
+  ],
   "manifest_version": 3,
   "action": {
     "default_popup": "popup.html"
