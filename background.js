@@ -1,7 +1,7 @@
-chrome.runtime.onInstalled.addListener(function () {
-  chrome.contextMenus.create({
-    id: "sampleContextMenu",
-    title: "Save quote",
-    contexts: ["page"],
-  });
+chrome.contextMenus.create({
+  title: "My custom menu item",
+  contexts: ["selection"],
+  onclick: function (info, tab) {
+    console.log("Selected text: " + info.selectionText);
+  },
 });
