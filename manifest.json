@@ -2,24 +2,23 @@
   "name": "QuoteKeeper",
   "description": "A Chrome extension to build a quote database",
   "version": "0.1.0",
-  "permissions": [
-    "storage",
-    "activeTab",
-    "identity",
-    "contextMenus",
-    "https://*.google.com/"
-  ],
   "manifest_version": 3,
-  "action": {
-    "default_popup": "popup.html"
-  },
   "background": {
     "service_worker": "background.js"
   },
+  "permissions": ["storage", "activeTab", "contextMenus"],
+  "action": {
+    "default_popup": "popup.html"
+  },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["https://*.google.com/*"],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "icons": {
+    "16": "16x16.svg",
+    "48": "48x48.svg",
+    "128": "128x128.svg"
+  }
 }
