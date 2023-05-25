@@ -11,6 +11,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
 chrome.contextMenus.create({
   id: "foo",
-  title: "Lukito",
+  title: "Nano",
   contexts: ["page"],
 });
