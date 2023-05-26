@@ -14,5 +14,5 @@ chrome.contextMenus.onClicked.addListener(function (info) {
   storage = {
     quote: text,
   };
-  console.log(storage);
+  console.log(storage.quote);
 });
