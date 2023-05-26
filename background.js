@@ -1,16 +1,18 @@
 chrome.runtime.onInstalled.addListener(() => {
-  console.log("Hello");
+  console.log("Everything's working");
+
+  chrome.contextMenus.create({
+    id: "save-quote",
+    title: "Save quote",
+    contexts: ["selection"],
+  });
 });
 
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  console.log(
-    sender.tab ? "from a content script" + sender.tab.url : "from the extension"
-  );
-  if (request.greeting === "hello") sendResponse({ farewell: "goodbyw" });
-});
-
-chrome.contextMenus.create({
-  id: "foo",
-  title: "Nano",
-  contexts: ["page"],
+chrome.contextMenus.onClicked.addListener(function (info) {
+  let storage = {};
+  let text = info.selectionText;
+  storage = {
+    quote: text,
+  };
+  console.log(storage);
 });
