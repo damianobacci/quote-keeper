@@ -8,11 +8,12 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
-chrome.contextMenus.onClicked.addListener(function (info) {
+chrome.contextMenus.onClicked.addListener(function (info, tab) {
   let storage = {};
   let text = info.selectionText;
   storage = {
     quote: text,
   };
   console.log(storage.quote);
+  console.log(tab.url);
 });
