@@ -15,7 +15,7 @@ document
       };
 
       chrome.storage.local.set(storage, function () {
-        window.close(); //
+        window.close();
       });
     });
   });
