@@ -9,11 +9,9 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.contextMenus.onClicked.addListener(function (info, tab) {
-  let storage = {};
   let text = info.selectionText;
-  storage = {
-    quote: text,
-  };
-  console.log(storage.quote);
-  console.log(tab.url);
+  chrome.storage.local.set({ quote: text, url: tab.url }, function () {
+    chrome.action.setPopup({ popup: "popup.html" });
+    chrome.action.openPopup();
+  });
 });
