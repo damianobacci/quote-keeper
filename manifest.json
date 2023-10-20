@@ -1,24 +1,16 @@
 {
-  "name": "QuoteKeeper",
-  "description": "A Chrome extension to build a quote database",
-  "version": "0.1.0",
   "manifest_version": 3,
-  "background": {
-    "service_worker": "background.js"
-  },
-  "permissions": ["storage", "activeTab", "contextMenus"],
+  "name": "Quote Keeper",
+  "description": "A Chrome extension to save quotes while you are browsing the news.",
+  "version": "1.0",
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "hello.html",
+    "default_icon": "icon.png"
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "js": ["scripts/content.js"],
+      "matches": ["*://*"]
     }
-  ],
-  "icons": {
-    "16": "16x16.svg",
-    "48": "48x48.svg",
-    "128": "128x128.svg"
-  }
+  ]
 }
