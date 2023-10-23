@@ -44,6 +44,7 @@ function showQuoteModal(quoteText) {
   `;
 
   function saveQuoteToStorage() {
+    // Define the quote data
     const quoteData = {
       text: document.querySelector("#quoteModal textarea").value,
       author: document.getElementById("quoteAuthor").value,
@@ -53,7 +54,6 @@ function showQuoteModal(quoteText) {
         .value.split(",")
         .map((tag) => tag.trim()),
     };
-    console.log(quoteData);
     // Fetch the stored quotes
     chrome.storage.local.get("quotes", function (data) {
       const quotes = data.quotes || [];

@@ -24,12 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
         downloadCSV(quotes);
       });
 
-    document
-      .getElementById("downloadXLS")
-      .addEventListener("click", function () {
-        downloadXLS(quotes);
-      });
-
     document.getElementById("deleteAll").addEventListener("click", function () {
       deleteAllQuotes();
     });
@@ -55,10 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
       link.setAttribute("download", "quotes.csv");
       document.body.appendChild(link);
       link.click();
-    }
-
-    function downloadXLS(quotes) {
-      alert("Downloading as XLS requires additional libraries.");
     }
 
     //Delete logic
