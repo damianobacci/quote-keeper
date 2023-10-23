@@ -20,6 +20,7 @@ function saveQuoteToStorage() {
         console.error(chrome.runtime.lastError);
       } else {
         console.log("Quote saved!");
+
         document.getElementById("quoteModal").remove();
       }
     });

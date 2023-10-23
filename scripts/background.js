@@ -39,12 +39,42 @@ function showQuoteModal(quoteText) {
       Author: <input type="text" id="quoteAuthor"><br>
       URL: <input type="text" id="quoteURL" value="${currentURL}" disabled><br>
       Tags: <input type="text" id="quoteTags" placeholder="tag1, tag2,..."><br>
-      <button onclick="saveQuoteToStorage()">Save</button>
+      <button id="send">Save</button>
       <button onclick="document.getElementById('quoteModal').remove()">Cancel</button>
     </div>
   `;
 
+  function saveQuoteToStorage() {
+    const quoteData = {
+      text: document.querySelector("#quoteModal textarea").value,
+      author: document.getElementById("quoteAuthor").value,
+      url: document.getElementById("quoteURL").value,
+      tags: document
+        .getElementById("quoteTags")
+        .value.split(",")
+        .map((tag) => tag.trim()),
+    };
+    console.log(quoteData);
+    // Fetch the stored quotes
+    chrome.storage.local.get("quotes", function (data) {
+      const quotes = data.quotes || [];
+      quotes.push(quoteData);
+
+      // Store the new list of quotes
+      chrome.storage.local.set({ quotes: quotes }, function () {
+        if (chrome.runtime.lastError) {
+          console.error(chrome.runtime.lastError);
+        } else {
+          console.log("Quote saved!");
+          document.getElementById("quoteModal").remove();
+        }
+      });
+    });
+  }
+
   const modalWrapper = document.createElement("div");
   modalWrapper.innerHTML = modalHTML;
   document.body.appendChild(modalWrapper);
+  const sendButton = document.getElementById("send");
+  sendButton.addEventListener("click", saveQuoteToStorage);
 }
