@@ -3,14 +3,18 @@
   "name": "Quote Keeper",
   "description": "A Chrome extension to save quotes while you are browsing the news.",
   "version": "1.0",
+  "permissions": ["scripting", "activeTab", "contextMenus", "storage"],
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
   "action": {
-    "default_popup": "hello.html",
+    "default_popup": "popup.html",
     "default_icon": "icon.png"
   },
   "content_scripts": [
     {
       "js": ["scripts/content.js"],
-      "matches": ["*://*"]
+      "matches": ["<all_urls>"]
     }
   ]
 }
