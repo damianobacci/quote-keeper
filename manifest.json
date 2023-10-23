@@ -11,9 +11,9 @@
     "default_popup": "popup.html",
     "default_icon": "icon.png"
   },
-  "content_scripts": [
+  "web_accessible_resources": [
     {
-      "js": ["scripts/content.js"],
+      "resources": ["quotes.html", "quotes.js"],
       "matches": ["<all_urls>"]
     }
   ]

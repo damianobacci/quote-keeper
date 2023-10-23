@@ -10,7 +10,6 @@ chrome.runtime.onInstalled.addListener(function () {
 chrome.contextMenus.onClicked.addListener(function (info, tab) {
   if (info.menuItemId === "save-quote" && tab.id) {
     const selectedText = info.selectionText;
-    console.log(selectedText);
 
     // Inject the content.js file
     chrome.scripting.executeScript(
@@ -58,6 +57,7 @@ function showQuoteModal(quoteText) {
     // Fetch the stored quotes
     chrome.storage.local.get("quotes", function (data) {
       const quotes = data.quotes || [];
+      console.log(quotes);
       quotes.push(quoteData);
 
       // Store the new list of quotes
